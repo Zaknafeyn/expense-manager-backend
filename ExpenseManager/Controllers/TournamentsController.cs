@@ -12,14 +12,15 @@ namespace ExpenseManager.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TournamentsController : BaseApiController<ExpenseManagerContext>
     {
-        public TournamentsController(ExpenseManagerContext ctx) : base(ctx)
+        public TournamentsController(ExpenseManagerContext ctx)
+            : base(ctx)
         {
         }
 
         // GET api/tournaments
         public IEnumerable<Tournament> Get()
         {
-            return _ctx.Tournaments;
+            return _ctx.Tournaments.OrderBy(x => x.StartDate);
         }
 
         // GET api/tournaments
@@ -28,7 +29,7 @@ namespace ExpenseManager.Controllers
             if (filter.ToLower() == "year")
             {
                 var year = int.Parse(value);
-                return _ctx.Tournaments.Where(x => x.Year == year);
+                return _ctx.Tournaments.Where(x => x.Year == year).OrderBy(x => x.StartDate);
             }
 
             return null;

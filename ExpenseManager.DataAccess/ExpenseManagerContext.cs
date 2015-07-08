@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using ExpenseManager.DataAccess.Initialiation;
 using ExpenseManager.DataAccess.Models;
 
 namespace ExpenseManager.DataAccess

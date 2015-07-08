@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpenseManager.DataAccess.Models
@@ -13,6 +14,10 @@ namespace ExpenseManager.DataAccess.Models
         [Required]
         public int Year { get; set; }
         [Required]
-        public string Place { get; set; } 
+        public string Place { get; set; }
+        [Required]
+        public DateTime StartDate { get; set; }
+        [Required]
+        public DateTime EndDate { get; set; }
     }
 }

@@ -171,8 +171,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\BaseApiController.cs" />
     <Compile Include="ControllersModule.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />
+    <Compile Include="Controllers\YearsController.cs" />
+    <Compile Include="DataObjects\LoginData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,8 +231,7 @@
           <IISUrl>http://localhost:59184/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://expense-manager-backend.azurewebsites.net</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

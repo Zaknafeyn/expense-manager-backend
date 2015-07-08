@@ -15,9 +15,10 @@ namespace ExpenseManager.DataAccess.Models
         public string Name { get; set; }
         [Required]
         public string Login { get; set; }
+        public string LoginHash { get; set; }
         [Required]
         public bool HasCar { get; set; }
-        public bool CarName { get; set; }
+        public string CarName { get; set; }
         [Required]
         public string PasswordHash { get; set; }
     }

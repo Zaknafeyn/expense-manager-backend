@@ -10,7 +10,8 @@ using System.Web.Http.Cors;
 namespace ExpenseManager.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProfilesController : BaseApiController<ExpenseManagerContext>
+    [RoutePrefix("")]
+    public class ProfilesController : BaseApiController
     {
         // GET api/players
         public ProfilesController(ExpenseManagerContext ctx)
