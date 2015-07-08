@@ -17,7 +17,7 @@ namespace ExpenseManager.Controllers
 
         public IEnumerable<int> Get()
         {
-            return _ctx.Tournaments.Select(x => x.Year).Distinct();
+            return _ctx.Tournaments.Select(x => x.Year).Distinct().ToList();
         }
     }
 }

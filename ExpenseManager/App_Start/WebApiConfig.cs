@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -26,7 +27,12 @@ namespace ExpenseManager
 
             config.MapHttpAttributeRoutes();
             config.EnableSystemDiagnosticsTracing();
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+
+//            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+//            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             //            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("json"));
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.

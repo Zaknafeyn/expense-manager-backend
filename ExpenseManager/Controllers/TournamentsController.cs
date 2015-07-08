@@ -20,7 +20,7 @@ namespace ExpenseManager.Controllers
         // GET api/tournaments
         public IEnumerable<Tournament> Get()
         {
-            return _ctx.Tournaments.OrderBy(x => x.StartDate);
+            return _ctx.Tournaments.OrderBy(x => x.StartDate).ToList();
         }
 
         // GET api/tournaments
@@ -29,7 +29,7 @@ namespace ExpenseManager.Controllers
             if (filter.ToLower() == "year")
             {
                 var year = int.Parse(value);
-                return _ctx.Tournaments.Where(x => x.Year == year).OrderBy(x => x.StartDate);
+                return _ctx.Tournaments.Where(x => x.Year == year).OrderBy(x => x.StartDate).ToList();
             }
 
             return null;
@@ -38,7 +38,7 @@ namespace ExpenseManager.Controllers
         // GET api/tournaments/5
         public Tournament Get(int id)
         {
-            var tournament = _ctx.Tournaments.FirstOrDefault(x => x.Id == id);
+            var tournament = _ctx.Tournaments.ToList().FirstOrDefault(x => x.Id == id);
             if (tournament == null)
                 return new Tournament();
 

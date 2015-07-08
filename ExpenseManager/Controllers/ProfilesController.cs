@@ -21,18 +21,15 @@ namespace ExpenseManager.Controllers
 
         public IEnumerable<Profile> Get()
         {
-            var profiles = _ctx.Profiles;
+            var profiles = _ctx.Profiles.ToList();
 
-            var result = new List<Profile>();
-            profiles.ForEach(result.Add);
-
-            return result;
+            return profiles;
         }
 
         // GET api/players/5
         public Profile Get(int id)
         {
-            var profile = _ctx.Profiles.SingleOrDefault(p => p.Id == id);
+            var profile = _ctx.Profiles.ToList().SingleOrDefault(p => p.Id == id);
             if (profile == null)
                 return new Profile()
                 {
