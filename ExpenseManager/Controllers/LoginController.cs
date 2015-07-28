@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using ExpenseManager.Common;
 using ExpenseManager.DataAccess;
 using ExpenseManager.DataAccess.Models;
@@ -10,6 +11,7 @@ using Microsoft.Ajax.Utilities;
 
 namespace ExpenseManager.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LoginController : BaseApiController
     {
         private MD5 _hashFunc = MD5.Create();
@@ -20,13 +22,18 @@ namespace ExpenseManager.Controllers
         }
 
         // POST api/login
+        [HttpOptions, HttpPost]
         public Profile Post([FromBody]LoginData loginData)
         {
+            if (Request.Method.Method.ToUpper() == "OPTIONS")
+                return null;
+
             var result = _ctx.Profiles.SingleOrDefault(x => GetHash(x.Login) == loginData.LoginHash && x.PasswordHash == loginData.PasswordHash.Trim());
+            
             return result;
         }
 
-        private string GetHash(string @string)
+        internal string GetHash(string @string)
         {
             var inputBytes = Encoding.ASCII.GetBytes(@string);
             byte[] hash = _hashFunc.ComputeHash(inputBytes);

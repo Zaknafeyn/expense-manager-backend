@@ -8,7 +8,7 @@ namespace ExpenseManager.DataAccess
         {
             ExpenseManagerContext.Configure();
 
-            builder.Register(x => new ExpenseManagerContext()).SingleInstance().As<ExpenseManagerContext>();
+            builder.Register(x => new ExpenseManagerContext()).As<ExpenseManagerContext>();
         }
     }
 }
