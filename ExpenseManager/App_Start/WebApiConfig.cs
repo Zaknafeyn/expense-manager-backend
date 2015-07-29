@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Microsoft.Data.OData;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace ExpenseManager
@@ -34,6 +35,8 @@ namespace ExpenseManager
 
 //            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
             //            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("json"));
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.

@@ -13,15 +13,13 @@ namespace ExpenseManager.DataAccess.Models
         public Category ExpenceCategory { get; set; }
         public double Expence { get; set; }
         public string Currency { get; set; }
-
-        public int ProfileRefId { get; set; }
-        [ForeignKey("ProfileRefId")]
-        public Profile Buyer { get; set; }
-
         public string Description { get; set; }
 
         public int CarCrewRefId { get; set; }
         [ForeignKey("CarCrewRefId")]
         public virtual CarCrew CarCrew { get; set; }
+        public int ProfileRefId { get; set; }
+        [ForeignKey("ProfileRefId")]
+        public virtual Profile Buyer { get; set; }
     }
 }
