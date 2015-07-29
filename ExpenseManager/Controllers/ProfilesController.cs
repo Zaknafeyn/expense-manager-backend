@@ -26,7 +26,7 @@ namespace ExpenseManager.Controllers
             return profiles;
         }
 
-        // GET api/players/5
+        // GET api/profiles/5
         public Profile Get(int id)
         {
             var profile = _ctx.Profiles.ToList().SingleOrDefault(p => p.Id == id);

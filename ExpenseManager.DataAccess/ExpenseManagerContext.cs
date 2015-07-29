@@ -10,10 +10,13 @@ namespace ExpenseManager.DataAccess
         public ExpenseManagerContext()
             : base("ExpenseManagerContext")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<CarCrew> CarCrews { get; set; }
+        public DbSet<CrewExpense> CrewExpenseses { get; set; }
 
         public static void Configure()
         {

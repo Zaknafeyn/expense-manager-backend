@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\BaseApiController.cs" />
     <Compile Include="ControllersModule.cs" />
+    <Compile Include="Controllers\CrewExpensesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />

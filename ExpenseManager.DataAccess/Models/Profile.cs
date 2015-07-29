@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
@@ -21,5 +22,7 @@ namespace ExpenseManager.DataAccess.Models
         public string CarName { get; set; }
         [Required]
         public string PasswordHash { get; set; }
+
+        public virtual ICollection<CrewExpense> CrewExpenses { get; set; }
     }
 }

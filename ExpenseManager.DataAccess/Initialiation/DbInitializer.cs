@@ -1,35 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using ExpenseManager.DataAccess.Models;
+using ExpenseManager.DataAccess.Models.Enums;
 
 namespace ExpenseManager.DataAccess.Initialiation
 {
     public class DbInitializer : DropCreateDatabaseAlways<ExpenseManagerContext>
     //    public class DbInitializer : DropCreateDatabaseIfModelChanges<ExpenseManagerContext>
     {
+        private readonly List<Profile> _profiles = new List<Profile>();
+        private readonly List<Tournament> _tournaments = new List<Tournament>();
+        private List<CarCrew> _carCrewList = new List<CarCrew>();
+
         protected override void Seed(ExpenseManagerContext context)
         {
             SeedProfiles(context);
             SeedTournaments(context);
+            SeedCarCrews(context);
+            SeedExpenses(context);
 
             context.SaveChanges();
         }
 
         private void SeedProfiles(ExpenseManagerContext context)
         {
-            context.Profiles.Add(new Profile
+            _profiles.Add(new Profile
             {
                 Id = 1,
                 Email = "test@gmail.com",
-                Name = "Andrey",
+                Name = "Andrey driver",
                 Login = "test@gmail.com",
                 HasCar = true,
                 CarName = "Test car name",
                 PasswordHash = "5b37040e6200edb3c7f409e994076872"
             });
 
-            context.Profiles.Add(new Profile
+            _profiles.Add(new Profile
             {
                 Id = 2,
                 Email = "test2@gmail.com",
@@ -39,7 +47,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                 PasswordHash = "3c4f419e8cd958690d0d14b3b89380d3"
             });
 
-            context.Profiles.Add(new Profile
+            _profiles.Add(new Profile
             {
                 Id = 3,
                 Email = "admin@test.com",
@@ -49,7 +57,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                 PasswordHash = "5b37040e6200edb3c7f409e994076872"
             });
 
-            context.Profiles.Add(new Profile
+            _profiles.Add(new Profile
             {
                 Id = 4,
                 Email = "manager@test.com",
@@ -59,7 +67,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                 PasswordHash = "ad5c2c75bd08bbf326ace2a8addf1e05"
             });
 
-            context.Profiles.Add(new Profile
+            _profiles.Add(new Profile
             {
                 Id = 5,
                 Email = "user@test.com",
@@ -68,13 +76,15 @@ namespace ExpenseManager.DataAccess.Initialiation
                 HasCar = false,
                 PasswordHash = "1460318498c1f53bb880ce2e6d9ef64b"
             });
+
+            context.Profiles.AddRange(_profiles);
         }
 
         private void SeedTournaments(ExpenseManagerContext context)
         {
             var year = 2010;
-            var tournamentsList = new List<Tournament>();
-            tournamentsList.AddRange(new List<Tournament>
+//            var _tournaments = new List<Tournament>();
+            _tournaments.AddRange(new List<Tournament>
             {
                 new Tournament
                 {
@@ -110,7 +120,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                 }});
 
             year = 2011;
-            tournamentsList.AddRange(new List<Tournament>
+            _tournaments.AddRange(new List<Tournament>
             { 
                 new Tournament
                 {
@@ -147,7 +157,7 @@ namespace ExpenseManager.DataAccess.Initialiation
             });
 
             year = 2012;
-            tournamentsList.AddRange(new List<Tournament>
+            _tournaments.AddRange(new List<Tournament>
             {
                 new Tournament
                 {
@@ -183,7 +193,98 @@ namespace ExpenseManager.DataAccess.Initialiation
                 }
             });
 
-            context.Tournaments.AddRange(tournamentsList);
+            context.Tournaments.AddRange(_tournaments);
+        }
+
+        private void SeedCarCrews(ExpenseManagerContext context)
+        {
+            _carCrewList = new List<CarCrew>
+            {
+                new CarCrew
+                {
+                    CrewMember = _profiles.First(x => x.Name == "Andrey driver"),
+                    IsDriver = true,
+                    IsCarOwner = true,
+                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                },
+                new CarCrew
+                {
+                    CrewMember = _profiles.First(x => x.Name == "Andrey"),
+                    IsDriver = false,
+                    IsCarOwner = false,
+                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                },
+                new CarCrew
+                {
+                    CrewMember = _profiles.First(x => x.Name == "Admin"),
+                    IsDriver = true,
+                    IsCarOwner = false,
+                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                },
+                new CarCrew
+                {
+                    CrewMember = _profiles.First(x => x.Name == "Manager"),
+                    IsDriver = true,
+                    IsCarOwner = false,
+                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                },
+            };
+
+            context.CarCrews.AddRange(_carCrewList);
+        }
+
+        private void SeedExpenses(ExpenseManagerContext context)
+        {
+            var expenseList = new List<CrewExpense>
+            {
+                new CrewExpense
+                {
+                    Buyer = _profiles.First(x => x.Name == "Andrey driver"),
+                    CarCrew = _carCrewList[0],
+                    Expence = 10,
+                    Currency = "UAH",
+                    Description = "Bulochka",
+                    ExpenceCategory = Category.Misc
+                },
+                new CrewExpense
+                {
+                    Buyer = _profiles.First(x => x.Name == "Andrey driver"),
+                    CarCrew = _carCrewList[0],
+                    Expence = 1000,
+                    Currency = "UAH",
+                    Description = "Patrol WOG",
+                    ExpenceCategory = Category.Patrol
+                },
+                new CrewExpense
+                {
+                    Buyer = _profiles.First(x => x.Name == "Andrey"),
+                    CarCrew = _carCrewList[0],
+                    Expence = 1000,
+                    Currency = "UAH",
+                    Description = "Patrol WOG",
+                    ExpenceCategory = Category.Patrol
+                },
+                new CrewExpense
+                {
+                    Buyer = _profiles.First(x => x.Name == "Andrey"),
+                    CarCrew = _carCrewList[0],
+                    Expence = 5000,
+                    Currency = "UAH",
+                    Description = "Patrol WOG",
+                    ExpenceCategory = Category.Patrol
+                },
+                new CrewExpense
+                {
+                    Buyer = _profiles.First(x => x.Name == "Admin"),
+                    CarCrew = _carCrewList[0],
+                    Expence = 1000,
+                    Currency = "UAH",
+                    Description = "Patrol WOG",
+                    ExpenceCategory = Category.Patrol
+                },
+            };
+
+            context.CrewExpenseses.AddRange(expenseList);
         }
     }
 }

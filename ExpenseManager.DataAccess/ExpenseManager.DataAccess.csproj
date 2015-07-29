@@ -62,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Initialiation\DbInitializer.cs" />
+    <Compile Include="Models\CarCrew.cs" />
+    <Compile Include="Models\CrewExpense.cs" />
+    <Compile Include="Models\Enums\Category.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="DataAccessModule.cs" />
     <Compile Include="Models\Tournament.cs" />
