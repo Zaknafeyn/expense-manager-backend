@@ -24,16 +24,20 @@ namespace ExpenseManager
                name: "ApiFilters",
                routeTemplate: "api/{controller}/filter/{filter}/{value}",
                defaults: new { filter = RouteParameter.Optional, id = RouteParameter.Optional }
-           );
-
+            );
+            config.Routes.MapHttpRoute(
+               name: "ApiCategory",
+               routeTemplate: "api/{controller}/category/{categoryName}",
+               defaults: new {categoryName = RouteParameter.Optional }
+            );
             config.MapHttpAttributeRoutes();
             config.EnableSystemDiagnosticsTracing();
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
-//            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            //            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
-//            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
+            //            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
@@ -50,11 +54,11 @@ namespace ExpenseManager
 
         private static void EnableCrossSiteRequests(HttpConfiguration config)
         {
-//            var cors = new EnableCorsAttribute(
-//                origins: "*",
-//                headers: "*",
-//                methods: "*");
-//            config.EnableCors(cors);
+            //            var cors = new EnableCorsAttribute(
+            //                origins: "*",
+            //                headers: "*",
+            //                methods: "*");
+            //            config.EnableCors(cors);
         }
     }
 }

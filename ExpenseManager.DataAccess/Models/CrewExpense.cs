@@ -12,7 +12,7 @@ namespace ExpenseManager.DataAccess.Models
         public int Id { get; set; }
         public Category Category { get; set; }
         public double Expense { get; set; }
-        public string Currency { get; set; }
+        public Currency Currency { get; set; }
         public string Description { get; set; }
 
         public int CarCrewRefId { get; set; }

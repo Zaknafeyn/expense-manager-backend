@@ -242,7 +242,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     Buyer = _profiles.First(x => x.Name == "Andrey driver"),
                     CarCrew = _carCrewList[0],
                     Expense = 10,
-                    Currency = "UAH",
+                    Currency = Currency.Uah,
                     Description = "Bulochka",
                     Category = Category.Misc
                 },
@@ -251,7 +251,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     Buyer = _profiles.First(x => x.Name == "Andrey driver"),
                     CarCrew = _carCrewList[0],
                     Expense = 1000,
-                    Currency = "UAH",
+                    Currency = Currency.Usd,
                     Description = "Patrol WOG",
                     Category = Category.Patrol
                 },
@@ -260,7 +260,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     Buyer = _profiles.First(x => x.Name == "Andrey"),
                     CarCrew = _carCrewList[0],
                     Expense = 1000,
-                    Currency = "UAH",
+                    Currency = Currency.Eur,
                     Description = "Patrol WOG",
                     Category = Category.Patrol
                 },
@@ -269,7 +269,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     Buyer = _profiles.First(x => x.Name == "Andrey"),
                     CarCrew = _carCrewList[0],
                     Expense = 5000,
-                    Currency = "UAH",
+                    Currency = Currency.Pln,
                     Description = "Patrol WOG",
                     Category = Category.Patrol
                 },
@@ -278,7 +278,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     Buyer = _profiles.First(x => x.Name == "Admin"),
                     CarCrew = _carCrewList[0],
                     Expense = 1000,
-                    Currency = "UAH",
+                    Currency = Currency.Byr,
                     Description = "Patrol WOG",
                     Category = Category.Patrol
                 },

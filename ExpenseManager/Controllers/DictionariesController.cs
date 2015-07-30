@@ -14,18 +14,24 @@ namespace ExpenseManager.Controllers
         // GET api/dictionaries
         public IEnumerable<string> Get()
         {
+            // return all dictionaries
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/dictionaries/5
-        public IEnumerable<object> Get(int id)
+        // GET api/dictionaries/category/<name>
+        public IEnumerable<object> Get(string categoryName)
         {
-            switch (id)
+            switch (categoryName)
             {
-                case 1: // categories
-                    var catId = 1;
+                case "categories": 
+                    var catId = 0;
                     foreach (var category in Enum.GetNames(typeof (Category)))
                         yield return new {id = catId++, category};
+                    break;
+                case "currencies": 
+                    var currencyId = 0;
+                    foreach (var currency in Enum.GetNames(typeof(Currency)))
+                        yield return new { currencyId = currencyId++, currency};
                     break;
             }
         }
