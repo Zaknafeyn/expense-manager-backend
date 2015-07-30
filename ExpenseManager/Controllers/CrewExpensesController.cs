@@ -32,19 +32,43 @@ namespace ExpenseManager.Controllers
             return result;
         }
 
-        // POST api/crewexpenses
-        public void Post([FromBody]string value)
+        // POST api/crewexpenses/1
+        // update expenses for a crew
+        public void Post(int id, [FromBody]IEnumerable<CrewExpense> expenses)
         {
+            // update
+            foreach (var crewExpense in expenses)
+            {
+                var originalCrewExpense = _ctx.CrewExpenseses.Find(crewExpense.Id);
+                if (originalCrewExpense != null)
+                {
+                    _ctx.Entry(originalCrewExpense).CurrentValues.SetValues(crewExpense);
+                }
+                else
+                {
+                    _ctx.CrewExpenseses.Add(crewExpense);
+                }
+            }
+
+            _ctx.SaveChangesAsync();
         }
 
-        // PUT api/crewexpenses/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/crewexpenses
+        public void Put([FromBody]CrewExpense crewExpense)
         {
+            _ctx.CrewExpenseses.Add(crewExpense);
+            _ctx.SaveChangesAsync();
         }
 
         // DELETE api/crewexpenses/5
         public void Delete(int id)
         {
+            var crewExpense = _ctx.CrewExpenseses.FirstOrDefault(x => x.Id == id);
+            if (crewExpense != null)
+            {
+                _ctx.CrewExpenseses.Remove(crewExpense);
+                _ctx.SaveChangesAsync();
+            }
         }
     }
 }

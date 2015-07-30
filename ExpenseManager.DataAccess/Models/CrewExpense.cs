@@ -10,8 +10,8 @@ namespace ExpenseManager.DataAccess.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Category ExpenceCategory { get; set; }
-        public double Expence { get; set; }
+        public Category Category { get; set; }
+        public double Expense { get; set; }
         public string Currency { get; set; }
         public string Description { get; set; }
 

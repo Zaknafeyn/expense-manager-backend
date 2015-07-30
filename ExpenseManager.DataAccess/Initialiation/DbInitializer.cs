@@ -241,46 +241,46 @@ namespace ExpenseManager.DataAccess.Initialiation
                 {
                     Buyer = _profiles.First(x => x.Name == "Andrey driver"),
                     CarCrew = _carCrewList[0],
-                    Expence = 10,
+                    Expense = 10,
                     Currency = "UAH",
                     Description = "Bulochka",
-                    ExpenceCategory = Category.Misc
+                    Category = Category.Misc
                 },
                 new CrewExpense
                 {
                     Buyer = _profiles.First(x => x.Name == "Andrey driver"),
                     CarCrew = _carCrewList[0],
-                    Expence = 1000,
+                    Expense = 1000,
                     Currency = "UAH",
                     Description = "Patrol WOG",
-                    ExpenceCategory = Category.Patrol
+                    Category = Category.Patrol
                 },
                 new CrewExpense
                 {
                     Buyer = _profiles.First(x => x.Name == "Andrey"),
                     CarCrew = _carCrewList[0],
-                    Expence = 1000,
+                    Expense = 1000,
                     Currency = "UAH",
                     Description = "Patrol WOG",
-                    ExpenceCategory = Category.Patrol
+                    Category = Category.Patrol
                 },
                 new CrewExpense
                 {
                     Buyer = _profiles.First(x => x.Name == "Andrey"),
                     CarCrew = _carCrewList[0],
-                    Expence = 5000,
+                    Expense = 5000,
                     Currency = "UAH",
                     Description = "Patrol WOG",
-                    ExpenceCategory = Category.Patrol
+                    Category = Category.Patrol
                 },
                 new CrewExpense
                 {
                     Buyer = _profiles.First(x => x.Name == "Admin"),
                     CarCrew = _carCrewList[0],
-                    Expence = 1000,
+                    Expense = 1000,
                     Currency = "UAH",
                     Description = "Patrol WOG",
-                    ExpenceCategory = Category.Patrol
+                    Category = Category.Patrol
                 },
             };
 
