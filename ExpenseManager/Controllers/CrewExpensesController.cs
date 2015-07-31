@@ -13,7 +13,7 @@ using ExpenseManager.DataAccess.Models;
 namespace ExpenseManager.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class CrewExpensesController : BaseApiController<ExpenseManagerContext>
+    public class CrewExpensesController : BaseApiController
     {
         // GET api/crewexpenses
         public CrewExpensesController(ExpenseManagerContext ctx) : base(ctx)
@@ -36,6 +36,9 @@ namespace ExpenseManager.Controllers
         // update expenses for a crew
         public void Post(int id, [FromBody]IEnumerable<CrewExpense> expenses)
         {
+            if (expenses == null)
+                return;
+
             // update
             foreach (var crewExpense in expenses)
             {
@@ -70,5 +73,7 @@ namespace ExpenseManager.Controllers
                 _ctx.SaveChangesAsync();
             }
         }
+
+        
     }
 }

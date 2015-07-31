@@ -22,7 +22,7 @@ namespace ExpenseManager.Controllers
         }
 
         // POST api/login
-        [HttpOptions, HttpPost]
+//        [HttpOptions, HttpPost]
         public Profile Post([FromBody]LoginData loginData)
         {
             if (Request.Method.Method.ToUpper() == "OPTIONS")

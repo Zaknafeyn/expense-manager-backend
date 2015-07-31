@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using ExpenseManager.DataAccess;
@@ -23,6 +24,19 @@ namespace ExpenseManager.Common
         protected BaseApiController(TCtx ctx)
         {
             _ctx = ctx;
+        }
+
+        public void Options()
+        {
+        }
+
+        public void Options(int id)
+        {
+        }
+
+        protected bool IsOptionsMethod()
+        {
+            return Request.Method.Method.ToUpper() == "OPTIONS";
         }
     }
 }

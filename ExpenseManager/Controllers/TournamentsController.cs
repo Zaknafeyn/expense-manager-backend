@@ -10,7 +10,7 @@ using ExpenseManager.DataAccess.Models;
 namespace ExpenseManager.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class TournamentsController : BaseApiController<ExpenseManagerContext>
+    public class TournamentsController : BaseApiController
     {
         public TournamentsController(ExpenseManagerContext ctx)
             : base(ctx)
