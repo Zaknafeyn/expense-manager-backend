@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using ExpenseManager.DataAccess;
@@ -17,6 +18,7 @@ namespace ExpenseManager.Common
         }
     }
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public abstract class BaseApiController<TCtx> : ApiController where TCtx : DbContext
     {
         protected TCtx _ctx;
@@ -28,15 +30,15 @@ namespace ExpenseManager.Common
 
         public void Options()
         {
+#if DEBUG
+            // add custom header when run on DEBUG on local machine
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+#endif
         }
 
         public void Options(int id)
         {
-        }
-
-        protected bool IsOptionsMethod()
-        {
-            return Request.Method.Method.ToUpper() == "OPTIONS";
+            Options();
         }
     }
 }
