@@ -60,19 +60,24 @@ namespace ExpenseManager.Controllers
         // PUT api/crewexpenses
         public void Put([FromBody]CrewExpense crewExpense)
         {
-            _ctx.CrewExpenseses.Add(crewExpense);
-            _ctx.SaveChangesAsync();
+            _ctx.AddExpense(crewExpense);
+
+//            _ctx.CrewExpenseses.Add(crewExpense);
+//            _ctx.SaveChangesAsync();
         }
 
         // DELETE api/crewexpenses/5
         public void Delete(int id)
         {
-            var crewExpense = _ctx.CrewExpenseses.FirstOrDefault(x => x.Id == id);
-            if (crewExpense != null)
-            {
-                _ctx.CrewExpenseses.Remove(crewExpense);
-                _ctx.SaveChangesAsync();
-            }
+            _ctx.RemoveExpense(id);
+
+//            var crewExpense = _ctx.CrewExpenseses.FirstOrDefault(x => x.Id == id);
+//            if (crewExpense != null)
+//            {
+//                _ctx.CrewExpenseses.Attach(crewExpense);
+//                _ctx.CrewExpenseses.Remove(crewExpense);
+//                _ctx.SaveChanges();
+//            }
         }
 
         

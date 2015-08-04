@@ -1,11 +1,12 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using ExpenseManager.DataAccess.Initialiation;
 using ExpenseManager.DataAccess.Models;
 
 namespace ExpenseManager.DataAccess
 {
     [DbConfigurationType(typeof(ExpenseManagerDbConfiguration))] 
-    public class ExpenseManagerContext : DbContext
+    public partial class ExpenseManagerContext : DbContext
     {
         public ExpenseManagerContext()
             : base("ExpenseManagerContext")
@@ -22,5 +23,6 @@ namespace ExpenseManager.DataAccess
         {
             Database.SetInitializer(new DbInitializer());
         }
+
     }
 }

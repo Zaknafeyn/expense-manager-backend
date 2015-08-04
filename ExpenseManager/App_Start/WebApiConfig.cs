@@ -17,17 +17,17 @@ namespace ExpenseManager
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/v1/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                name: "ApiFilters",
-               routeTemplate: "api/{controller}/filter/{filter}/{value}",
+               routeTemplate: "api/v1/{controller}/filter/{filter}/{value}",
                defaults: new { filter = RouteParameter.Optional, id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                name: "ApiCategory",
-               routeTemplate: "api/{controller}/category/{categoryName}",
+               routeTemplate: "api/v1/{controller}/category/{categoryName}",
                defaults: new {categoryName = RouteParameter.Optional }
             );
             config.MapHttpAttributeRoutes();

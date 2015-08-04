@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,10 +13,11 @@ namespace ExpenseManager.Controllers
     public class DictionariesController : ApiController
     {
         // GET api/dictionaries
-        public IEnumerable<string> Get()
+        public object Get()
         {
             // return all dictionaries
-            return new string[] { "value1", "value2" };
+
+            return new {Categories = GetCategories(), Currencies = GetCurrencies()};
         }
 
         // GET api/dictionaries/category/<name>
@@ -23,15 +25,11 @@ namespace ExpenseManager.Controllers
         {
             switch (categoryName)
             {
-                case "categories": 
-                    var catId = 0;
-                    foreach (var category in Enum.GetNames(typeof (Category)))
-                        yield return new {id = catId++, category};
+                case "categories":
+                    yield return GetCategories();
                     break;
-                case "currencies": 
-                    var currencyId = 0;
-                    foreach (var currency in Enum.GetNames(typeof(Currency)))
-                        yield return new { currencyId = currencyId++, currency};
+                case "currencies":
+                    yield return GetCurrencies();
                     break;
             }
         }
@@ -50,5 +48,19 @@ namespace ExpenseManager.Controllers
         public void Delete(int id)
         {
         }
+
+        private IEnumerable<object> GetCurrencies()
+        {
+            var currencyId = 0;
+            foreach (var currency in Enum.GetNames(typeof(Currency)))
+                yield return new { id = currencyId++, currency };
+        }
+
+        private IEnumerable<object> GetCategories()
+        {
+            var catId = 0;
+            foreach (var category in Enum.GetNames(typeof(Category)))
+                yield return new { id = catId++, category };
+        } 
     }
 }

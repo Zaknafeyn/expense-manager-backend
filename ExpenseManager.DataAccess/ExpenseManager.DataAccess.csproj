@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="ExpenseManagerContext.crud.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
