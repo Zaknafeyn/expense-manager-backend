@@ -10,6 +10,9 @@ using ExpenseManager.DataAccess.Models.Enums;
 
 namespace ExpenseManager.Controllers
 {
+    /// <summary>
+    /// Exposes different dictionaries (like registered currencies, categories etc)
+    /// </summary>
     public class DictionariesController : ApiController
     {
         // GET api/dictionaries
@@ -20,7 +23,8 @@ namespace ExpenseManager.Controllers
             return new {Categories = GetCategories(), Currencies = GetCurrencies()};
         }
 
-        // GET api/dictionaries/category/<name>
+//        // GET api/dictionaries/category/<name>
+        [Route("api/v1/dictionaries/category/{categoryName}")]
         public IEnumerable<object> Get(string categoryName)
         {
             switch (categoryName)
@@ -32,21 +36,6 @@ namespace ExpenseManager.Controllers
                     yield return GetCurrencies();
                     break;
             }
-        }
-
-        // POST api/dictionaries
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/dictionaries/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/dictionaries/5
-        public void Delete(int id)
-        {
         }
 
         private IEnumerable<object> GetCurrencies()

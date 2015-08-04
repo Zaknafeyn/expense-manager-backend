@@ -15,21 +15,24 @@ namespace ExpenseManager
         {
             EnableCrossSiteRequests(config);
 
+            const string apiUrlPrefix = "api/v1/";
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/v1/{controller}/{id}",
+                routeTemplate: apiUrlPrefix + "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                name: "ApiFilters",
-               routeTemplate: "api/v1/{controller}/filter/{filter}/{value}",
+               routeTemplate: apiUrlPrefix + "{controller}/filter/{filter}/{value}",
                defaults: new { filter = RouteParameter.Optional, id = RouteParameter.Optional }
             );
-            config.Routes.MapHttpRoute(
-               name: "ApiCategory",
-               routeTemplate: "api/v1/{controller}/category/{categoryName}",
-               defaults: new {categoryName = RouteParameter.Optional }
-            );
+//            config.Routes.MapHttpRoute(
+//               name: "ApiCategory",
+//               routeTemplate: apiUrlPrefix + "{controller}/category/{categoryName}",
+//               defaults: new { controller = "dictionaries" }
+//            );
+
             config.MapHttpAttributeRoutes();
             config.EnableSystemDiagnosticsTracing();
             config.Formatters.Clear();

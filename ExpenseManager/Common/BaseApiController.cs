@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using ExpenseManager.DataAccess;
+using Newtonsoft.Json.Bson;
 
 namespace ExpenseManager.Common
 {
@@ -12,7 +13,8 @@ namespace ExpenseManager.Common
     {
         protected ExpenseManagerContext _ctx;
 
-        protected BaseApiController(ExpenseManagerContext ctx) : base(ctx)
+        protected BaseApiController(ExpenseManagerContext ctx)
+            : base(ctx)
         {
             _ctx = ctx;
         }
@@ -28,17 +30,22 @@ namespace ExpenseManager.Common
             _ctx = ctx;
         }
 
-        public void Options()
+//        public void Options()
+//        {
+//
+//        }
+//
+//        public void Options(int id)
+//        {
+//            Options();
+//        }
+
+        protected void HandleOptions()
         {
 #if DEBUG
             // add custom header when run on DEBUG on local machine
             HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 #endif
-        }
-
-        public void Options(int id)
-        {
-            Options();
         }
     }
 }

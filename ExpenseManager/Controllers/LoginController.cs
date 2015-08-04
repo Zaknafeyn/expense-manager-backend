@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 using ExpenseManager.Common;
 using ExpenseManager.DataAccess;
 using ExpenseManager.DataAccess.Models;
@@ -13,23 +14,32 @@ namespace ExpenseManager.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LoginController : BaseApiController
     {
-        private MD5 _hashFunc = MD5.Create(); 
+        private MD5 _hashFunc = MD5.Create();
 
-        // GET api/login
+#pragma warning disable 1591
         public LoginController(ExpenseManagerContext ctx) : base(ctx)
         {
         }
+#pragma warning restore 1591
 
         // POST api/login
-//        [HttpOptions, HttpPost]
+        /// <summary>
+        /// Post login data to server for authentication and getting a profile
+        /// </summary>
         public Profile Post([FromBody]LoginData loginData)
         {
-            if (Request.Method.Method.ToUpper() == "OPTIONS")
-                return null;
-
             var result = _ctx.Profiles.ToList().SingleOrDefault(x => GetHash(x.Login) == loginData.LoginHash && x.PasswordHash == loginData.PasswordHash.Trim());
             
             return result;
+        }
+
+        /// <summary>
+        /// Handle Options header
+        /// </summary>
+        [ApiExplorerSettings(IgnoreApi=true)]
+        public void Options()
+        {
+            HandleOptions();
         }
 
         private string GetHash(string @string, bool upperCase = false)
