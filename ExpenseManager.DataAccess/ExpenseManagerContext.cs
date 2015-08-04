@@ -9,7 +9,11 @@ namespace ExpenseManager.DataAccess
     public partial class ExpenseManagerContext : DbContext
     {
         public ExpenseManagerContext()
-            : base("ExpenseManagerContext")
+            : this("ExpenseManagerContext")
+        {
+        }
+
+        public ExpenseManagerContext(string connectionString) : base(connectionString)
         {
             Configuration.ProxyCreationEnabled = false;
         }

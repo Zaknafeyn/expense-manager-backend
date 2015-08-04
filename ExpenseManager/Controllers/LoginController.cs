@@ -7,7 +7,6 @@ using ExpenseManager.Common;
 using ExpenseManager.DataAccess;
 using ExpenseManager.DataAccess.Models;
 using ExpenseManager.DataObjects;
-using Microsoft.Ajax.Utilities;
 
 namespace ExpenseManager.Controllers
 {

@@ -20,12 +20,13 @@ namespace ExpenseManager.DataAccess
             SaveChanges();
         }
 
-        public void UpdateExpense(int expenseId)
+        public void UpdateExpense(CrewExpense crewExpense)
         {
-            var expense = CrewExpenseses.Single(x => x.Id == expenseId);
-            CrewExpenseses.Remove(expense);
+            var attachedCrewExpense = CrewExpenseses.Find(crewExpense.Id);
+            Entry(attachedCrewExpense).CurrentValues.SetValues(crewExpense);
 
             SaveChanges();
         }
+
     }
 }

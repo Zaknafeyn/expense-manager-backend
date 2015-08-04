@@ -17,7 +17,8 @@ namespace ExpenseManager.Controllers
     public class CrewExpensesController : BaseApiController
     {
         // GET api/crewexpenses
-        public CrewExpensesController(ExpenseManagerContext ctx) : base(ctx)
+        public CrewExpensesController(ExpenseManagerContext ctx)
+            : base(ctx)
         {
         }
 
@@ -40,46 +41,36 @@ namespace ExpenseManager.Controllers
             if (expenses == null)
                 return;
 
-            // update
+
             foreach (var crewExpense in expenses)
             {
                 var originalCrewExpense = _ctx.CrewExpenseses.Find(crewExpense.Id);
                 if (originalCrewExpense != null)
                 {
-                    _ctx.Entry(originalCrewExpense).CurrentValues.SetValues(crewExpense);
+                    // update
+                    //                    _ctx.Entry(originalCrewExpense).CurrentValues.SetValues(crewExpense);
+                    _ctx.UpdateExpense(crewExpense);
                 }
                 else
                 {
-                    _ctx.CrewExpenseses.Add(crewExpense);
+                    //add
+                    _ctx.AddExpense(crewExpense);
                 }
             }
 
-            _ctx.SaveChangesAsync();
+            _ctx.SaveChanges();
         }
 
         // PUT api/crewexpenses
         public void Put([FromBody]CrewExpense crewExpense)
         {
             _ctx.AddExpense(crewExpense);
-
-//            _ctx.CrewExpenseses.Add(crewExpense);
-//            _ctx.SaveChangesAsync();
         }
 
         // DELETE api/crewexpenses/5
         public void Delete(int id)
         {
             _ctx.RemoveExpense(id);
-
-//            var crewExpense = _ctx.CrewExpenseses.FirstOrDefault(x => x.Id == id);
-//            if (crewExpense != null)
-//            {
-//                _ctx.CrewExpenseses.Attach(crewExpense);
-//                _ctx.CrewExpenseses.Remove(crewExpense);
-//                _ctx.SaveChanges();
-//            }
         }
-
-        
     }
 }
