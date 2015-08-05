@@ -19,7 +19,7 @@ namespace ExpenseManager.DataAccess
         }
 
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<Trips> Trips { get; set; }
         public DbSet<CarCrew> CarCrews { get; set; }
         public DbSet<CrewExpense> CrewExpenseses { get; set; }
 

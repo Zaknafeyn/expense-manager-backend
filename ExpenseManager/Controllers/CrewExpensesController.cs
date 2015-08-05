@@ -61,6 +61,14 @@ namespace ExpenseManager.Controllers
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Handle options for POST And DELETE methods
+        /// </summary>
+        public void Options()
+        {
+            HandleOptions();
+        }
+
         // PUT api/crewexpenses
         public void Put([FromBody]CrewExpense crewExpense)
         {

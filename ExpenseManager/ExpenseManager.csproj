@@ -29,7 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>App_Data\ExpenseManager.XML</DocumentationFile>
+    <DocumentationFile>App_Data\ExpenseManager.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -207,7 +207,7 @@
     <Compile Include="Controllers\DictionariesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
-    <Compile Include="Controllers\TournamentsController.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Controllers\YearsController.cs" />
     <Compile Include="DataObjects\LoginData.cs" />
     <Compile Include="Global.asax.cs">

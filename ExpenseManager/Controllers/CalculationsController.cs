@@ -20,12 +20,12 @@ namespace ExpenseManager.Controllers
         // GET api/calculations/5 (tournament id)
         public double Get(int id)
         {
-            var crewMembers = _ctx.CarCrews.ToList().Where(x => x.TournamentRefId == id);
+            var crewMembers = _ctx.CarCrews.ToList().Where(x => x.TripRefId == id);
             var crewMembersCount = crewMembers.Count();
 
             var crewExpenses =
                 _ctx.CrewExpenseses.Include(x => x.CarCrew)
-                    .Where(x => x.CarCrew.TournamentRefId == id).Sum(x => x.Expense);
+                    .Where(x => x.CarCrew.TripRefId == id).Sum(x => x.Expense);
 
             return crewExpenses / crewMembersCount;
         }

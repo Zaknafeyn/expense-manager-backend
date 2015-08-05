@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpenseManager.DataAccess.Models
 {
-    public class Tournament
+    public class Trips
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

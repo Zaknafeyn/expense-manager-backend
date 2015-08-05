@@ -481,6 +481,11 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:ExpenseManager.Controllers.CrewExpensesController.Options">
+            <summary>
+            Handle options for POST And DELETE methods
+            </summary>
+        </member>
         <member name="T:ExpenseManager.Controllers.DictionariesController">
             <summary>
             Exposes different dictionaries (like registered currencies, categories etc)
@@ -494,6 +499,11 @@
         <member name="M:ExpenseManager.Controllers.LoginController.Options">
             <summary>
             Handle Options header
+            </summary>
+        </member>
+        <member name="T:ExpenseManager.Controllers.TripsController">
+            <summary>
+            Return trips data
             </summary>
         </member>
     </members>

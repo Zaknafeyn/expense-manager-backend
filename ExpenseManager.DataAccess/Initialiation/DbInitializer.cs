@@ -11,7 +11,7 @@ namespace ExpenseManager.DataAccess.Initialiation
     //    public class DbInitializer : DropCreateDatabaseIfModelChanges<ExpenseManagerContext>
     {
         private readonly List<Profile> _profiles = new List<Profile>();
-        private readonly List<Tournament> _tournaments = new List<Tournament>();
+        private readonly List<Trips> _tournaments = new List<Trips>();
         private List<CarCrew> _carCrewList = new List<CarCrew>();
 
         protected override void Seed(ExpenseManagerContext context)
@@ -84,9 +84,9 @@ namespace ExpenseManager.DataAccess.Initialiation
         {
             var year = 2010;
 //            var _tournaments = new List<Tournament>();
-            _tournaments.AddRange(new List<Tournament>
+            _tournaments.AddRange(new List<Trips>
             {
-                new Tournament
+                new Trips
                 {
                     Name = "ZChU'2010",
                     Place = "Lutsk",
@@ -94,7 +94,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 3, 20 ),
                     EndDate = new DateTime(year, 3, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "BBG'2010",
                     Place = "Brest",
@@ -102,7 +102,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 5, 20 ),
                     EndDate = new DateTime(year, 5, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "PChU'2010",
                     Place = "Odessa",
@@ -110,7 +110,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 7, 20 ),
                     EndDate = new DateTime(year, 7, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "OChU'2010",
                     Place = "Lvov",
@@ -120,9 +120,9 @@ namespace ExpenseManager.DataAccess.Initialiation
                 }});
 
             year = 2011;
-            _tournaments.AddRange(new List<Tournament>
+            _tournaments.AddRange(new List<Trips>
             { 
-                new Tournament
+                new Trips
                 {
                     Name = "ZChU'2011",
                     Place = "Lutsk",
@@ -130,7 +130,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 3, 20 ),
                     EndDate = new DateTime(year, 3, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "BBG'2011",
                     Place = "Brest",
@@ -138,7 +138,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 5, 20 ),
                     EndDate = new DateTime(year, 5, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "PChU'2011",
                     Place = "Ilyechevsk",
@@ -146,7 +146,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 7, 20 ),
                     EndDate = new DateTime(year, 7, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "OChU'2011",
                     Place = "Ivano-Frankivsk",
@@ -157,9 +157,9 @@ namespace ExpenseManager.DataAccess.Initialiation
             });
 
             year = 2012;
-            _tournaments.AddRange(new List<Tournament>
+            _tournaments.AddRange(new List<Trips>
             {
-                new Tournament
+                new Trips
                 {
                     Name = "ZChU'2012",
                     Place = "Lutsk",
@@ -167,7 +167,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 3, 20 ),
                     EndDate = new DateTime(year, 3, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "BBG'2012",
                     Place = "Brest",
@@ -175,7 +175,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 5, 20 ),
                     EndDate = new DateTime(year, 5, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "PChU'2012",
                     Place = "Ilyechevsk",
@@ -183,7 +183,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                     StartDate = new DateTime(year, 7, 20 ),
                     EndDate = new DateTime(year, 7, 22 ),
                 },
-                new Tournament
+                new Trips
                 {
                     Name = "OChU'2012",
                     Place = "Kyiv",
@@ -193,7 +193,7 @@ namespace ExpenseManager.DataAccess.Initialiation
                 }
             });
 
-            context.Tournaments.AddRange(_tournaments);
+            context.Trips.AddRange(_tournaments);
         }
 
         private void SeedCarCrews(ExpenseManagerContext context)
@@ -205,28 +205,28 @@ namespace ExpenseManager.DataAccess.Initialiation
                     CrewMember = _profiles.First(x => x.Name == "Andrey driver"),
                     IsDriver = true,
                     IsCarOwner = true,
-                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                    Trip = _tournaments.First(x => x.Name == "ZChU'2010")
                 },
                 new CarCrew
                 {
                     CrewMember = _profiles.First(x => x.Name == "Andrey"),
                     IsDriver = false,
                     IsCarOwner = false,
-                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                    Trip = _tournaments.First(x => x.Name == "ZChU'2010")
                 },
                 new CarCrew
                 {
                     CrewMember = _profiles.First(x => x.Name == "Admin"),
                     IsDriver = true,
                     IsCarOwner = false,
-                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                    Trip = _tournaments.First(x => x.Name == "ZChU'2010")
                 },
                 new CarCrew
                 {
                     CrewMember = _profiles.First(x => x.Name == "Manager"),
                     IsDriver = true,
                     IsCarOwner = false,
-                    Tournament = _tournaments.First(x => x.Name == "ZChU'2010")
+                    Trip = _tournaments.First(x => x.Name == "ZChU'2010")
                 },
             };
 

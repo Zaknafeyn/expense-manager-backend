@@ -16,9 +16,9 @@ namespace ExpenseManager.DataAccess.Models
 //
 //        [ForeignKey("ProfileRefId")]
         public Profile CrewMember { get; set; }
-        public int TournamentRefId { get; set; }
-        [ForeignKey("TournamentRefId")]
-        public virtual Tournament Tournament { get; set; }
+        public int TripRefId { get; set; }
+        [ForeignKey("TripRefId")]
+        public virtual Trips Trip { get; set; }
 
         public virtual ICollection<CrewExpense> CrewExpenses { get; set; }
 
