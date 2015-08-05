@@ -202,6 +202,7 @@
     <Compile Include="Common\BaseApiController.cs" />
     <Compile Include="ControllersModule.cs" />
     <Compile Include="Controllers\CalculationsController.cs" />
+    <Compile Include="Controllers\CrewController.cs" />
     <Compile Include="Controllers\CrewExpensesController.cs" />
     <Compile Include="Controllers\CurrenciesController.cs" />
     <Compile Include="Controllers\DictionariesController.cs" />

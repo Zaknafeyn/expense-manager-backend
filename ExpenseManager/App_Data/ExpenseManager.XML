@@ -481,6 +481,11 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:ExpenseManager.Controllers.CrewController">
+            <summary>
+            Crew operations
+            </summary>
+        </member>
         <member name="M:ExpenseManager.Controllers.CrewExpensesController.Options">
             <summary>
             Handle options for POST And DELETE methods
