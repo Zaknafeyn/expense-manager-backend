@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -16,7 +17,7 @@ namespace ExpenseManager.Areas.HelpPage
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "HelpPage_Default",
+                "HelpPage_DefaultRoute",
                 "Help/{action}/{apiId}",
                 new { controller = "Help", action = "Index", apiId = UrlParameter.Optional });
 
