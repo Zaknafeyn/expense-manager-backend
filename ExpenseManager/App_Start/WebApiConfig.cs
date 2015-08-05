@@ -15,8 +15,6 @@ namespace ExpenseManager
         {
             EnableCrossSiteRequests(config);
 
-            config.MapHttpAttributeRoutes();
-
             const string apiUrlPrefix = "api/v1/";
 
             config.Routes.MapHttpRoute(
@@ -35,7 +33,7 @@ namespace ExpenseManager
 //               defaults: new { controller = "dictionaries" }
 //            );
 
-            
+            config.MapHttpAttributeRoutes();
             config.EnableSystemDiagnosticsTracing();
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
